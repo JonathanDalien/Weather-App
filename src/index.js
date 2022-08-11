@@ -1,4 +1,10 @@
 const { cond } = require("lodash");
+import "./style/style.css"
+import "./style/weather-icons.css"
+import "./style/weather-icons.min.css"
+import "./style/weather-icons-wind.css"
+import "./style/weather-icons-wind.min.css"
+
 
 const cityInput = document.querySelector("#input-city");
 const searchBtn = document.querySelector(".search")
