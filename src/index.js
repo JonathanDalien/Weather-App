@@ -38,7 +38,6 @@ function setSearchResult(weatherData) {
     const day = document.querySelector(".day");
     const time = document.querySelector(".time");
     const icon = document.getElementById("icon")
-    console.log(icon)
 
     city.textContent = `${weatherData.location}, ${weatherData.region}`
     weather.textContent = `${weatherData.condition}`
@@ -229,7 +228,6 @@ function processData(weatherData) {
             break;
     }
 
-    console.log(data);
     return data;
 }
 
@@ -247,3 +245,5 @@ cityInput.addEventListener('keypress', function (e) {
     }
 
 })
+
+getWeatherData("Mannheim");
