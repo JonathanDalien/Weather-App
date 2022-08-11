@@ -4,6 +4,7 @@ import "./style/weather-icons.css"
 import "./style/weather-icons.min.css"
 import "./style/weather-icons-wind.css"
 import "./style/weather-icons-wind.min.css"
+import "../src/wolkig.png"
 
 
 const cityInput = document.querySelector("#input-city");
