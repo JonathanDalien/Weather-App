@@ -1,5 +1,6 @@
 const cityInput = document.querySelector("#input-city");
 const searchBtn = document.querySelector(".search")
+const img = document.querySelector(".pictest")
 
 
 async function getWeatherData(location) {
@@ -13,6 +14,7 @@ async function getWeatherData(location) {
         throwErrorMsg();
     }
     const weatherData = await response.json();
+    const timeData = processTime(weatherData);
     const newData = processData(weatherData);
     setSearchResult(newData);
 }
@@ -48,9 +50,79 @@ function processData(weatherData) {
         humidity: weatherData.current.humidity,
         location: weatherData.location.name,
         region: weatherData.location.region,
+        date: new Date(`${weatherData.location.localtime}`)
     }
     return data;
 }
+
+function processTime(weatherData) {
+    const date = new Date(`${weatherData.location.localtime}`)
+    const day = date.getDay();
+    let dayDe;
+
+    switch (day) {
+        case 0:
+            dayDe = "Sonntag"
+            break;
+        case 1:
+            dayDe = "Montag"
+            break;
+        case 2:
+            dayDe = "Dienstag"
+            break;
+        case 3:
+            dayDe = "Mittwoch"
+            break;
+        case 4:
+            dayDe = "Donnerstag"
+            break;
+        case 5:
+            dayDe = "Freitag"
+            break;
+        case 6:
+            dayDe = "Samstag"
+            break;
+
+    }
+
+}
+
+
+function testfunction() {
+    const date = new Date("2022-08-12 15:12")
+    const day = date.getDay();
+    let dayDe;
+
+    switch (day) {
+        case 0:
+            dayDe = "Sonntag"
+            break;
+        case 1:
+            dayDe = "Montag"
+            break;
+        case 2:
+            dayDe = "Dienstag"
+            break;
+        case 3:
+            dayDe = "Mittwoch"
+            break;
+        case 4:
+            dayDe = "Donnerstag"
+            break;
+        case 5:
+            dayDe = "Freitag"
+            break;
+        case 6:
+            dayDe = "Samstag"
+            break;
+    }
+
+    return dayDe;
+
+}
+
+console.log(testfunction())
+
 
 searchBtn.addEventListener("click", (e) => {
     e.preventDefault();
