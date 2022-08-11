@@ -42,7 +42,7 @@ module.exports = {
     //plugins
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Just a Demo',
+            title: 'Weather',
             filename: 'index.html',
             template: path.resolve(__dirname, 'src/temp.html'),
         }),
