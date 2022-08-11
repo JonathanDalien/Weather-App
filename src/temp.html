@@ -18,10 +18,11 @@
 
 <body>
     <header>
-        <form action="Get" class="form">
-            <input type="text" name="city" id="input-city" placeholder="Enter your city">
+        <form autocomplete="off" method="Get" class="form">
+            <input type="text" name="city" id="input-city" placeholder="Geben Sie Ihre Stadt ein">
             <i class="search fa-solid fa-magnifying-glass-location"></i>
         </form>
+        <p class="error">Stadt konnte nicht gefunden werden!</p>
     </header>
     <main>
         <div class="weather-data">
@@ -33,10 +34,9 @@
                     <h3 class="time">22:22 Uhr</h3>
                 </div>
                 <div class="celsius">
-                    20&deg;C
+                    20 &deg;C
                 </div>
                 <i id="icon" class="icon wi wi-night-sleet"></i>
-
             </div>
             <div class="celsius-info">
                 <div class="add-info">
@@ -44,7 +44,7 @@
                         <i class="weather-details-icon wi wi-thermometer"></i>
                         <div class="add-info-data">
                             <p class="add-info-data-text">Gefühlt:</p>
-                            <p class="feelslike-data"> 20&deg;C</p>
+                            <p class="feelslike-data"> 20 &deg;C</p>
                         </div>
                     </div>
                     <div class="wind">

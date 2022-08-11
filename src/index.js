@@ -2,30 +2,33 @@ const { cond } = require("lodash");
 
 const cityInput = document.querySelector("#input-city");
 const searchBtn = document.querySelector(".search")
-const img = document.querySelector(".pictest")
+const errorMsg = document.querySelector(".error");
 
 async function getWeatherData(location) {
-    const response = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=1986480656ec490d950204923202611&q=${location}&lang=de`,
-        {
-            mode: 'cors'
-        }
-    );
-    if (!response.ok) {
+    try {
+        const response = await fetch(
+            `http://api.weatherapi.com/v1/forecast.json?key=1986480656ec490d950204923202611&q=${location}&lang=de`,
+            {
+                mode: 'cors'
+            }
+        );
+        const weatherData = await response.json();
+        const newData = processData(weatherData);
+        setSearchResult(newData);
+    } catch (e) {
         throwErrorMsg();
     }
-    const weatherData = await response.json();
-    const newData = processData(weatherData);
-    setSearchResult(newData);
 }
 
 function throwErrorMsg() {
-    console.log("error")
+
+    errorMsg.style.display = "block"
 }
 
 function setSearchResult(weatherData) {
     if (!weatherData) return;
 
+    errorMsg.style.display = "none"
     const weather = document.querySelector(".weather");
     const city = document.querySelector(".city")
     const celsius = document.querySelector(".celsius")
@@ -39,7 +42,7 @@ function setSearchResult(weatherData) {
 
     city.textContent = `${weatherData.location}, ${weatherData.region}`
     weather.textContent = `${weatherData.condition}`
-    celsius.textContent = `${weatherData.currentTemp}°C`
+    celsius.textContent = `${weatherData.currentTemp} °C`
     feelsLike.textContent = `${weatherData.feelslike} °C`
     wind.textContent = `${weatherData.wind} km/h`
     humidity.textContent = `${weatherData.humidity}%`
@@ -54,10 +57,24 @@ function setIcon(condition) {
     switch (condition) {
         case "Sonnig":
             return "wi-day-sunny"
-            break;
         case "leicht bewölkt":
             return "wi-day-cloudy"
-            break;
+        case "Klar":
+            return "wi-night-clear"
+        case "bewölkt":
+            return "wi-cloudy"
+        case "bedeckt":
+            return "wi-day-sunny-overcast"
+        case "leichter Nebel":
+            return "wi-fog"
+        case "stellenweise Regenfall":
+            return "wi-showers"
+        case "stellenweise Schneefall":
+            return "wi-snow"
+        case "Nebel":
+            return "wi-dust"
+        case "leichter Regenfall":
+            return "wi-sleet"
         default:
             return "wi-day-storm-showers"
     }
@@ -111,6 +128,39 @@ function processData(weatherData) {
             break;
         case 9:
             data["hours"] = "09"
+            break;
+    }
+    const minutes = date.getMinutes();
+    switch (minutes) {
+        case 0:
+            data["minutes"] = "00"
+            break;
+        case 1:
+            data["minutes"] = "01"
+            break;
+        case 2:
+            data["minutes"] = "02"
+            break;
+        case 3:
+            data["minutes"] = "03"
+            break;
+        case 4:
+            data["minutes"] = "04"
+            break;
+        case 5:
+            data["minutes"] = "05"
+            break;
+        case 6:
+            data["minutes"] = "06"
+            break;
+        case 7:
+            data["minutes"] = "07"
+            break;
+        case 8:
+            data["minutes"] = "08"
+            break;
+        case 9:
+            data["minutes"] = "09"
             break;
     }
 
@@ -187,4 +237,13 @@ searchBtn.addEventListener("click", (e) => {
     e.preventDefault();
     if (cityInput.value == "") return;
     getWeatherData(cityInput.value);
+})
+
+cityInput.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        if (cityInput.value == "") return;
+        getWeatherData(cityInput.value);
+    }
+
 })
