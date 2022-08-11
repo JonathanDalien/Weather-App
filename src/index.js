@@ -7,7 +7,7 @@ const errorMsg = document.querySelector(".error");
 async function getWeatherData(location) {
     try {
         const response = await fetch(
-            `http://api.weatherapi.com/v1/forecast.json?key=1986480656ec490d950204923202611&q=${location}&lang=de`,
+            `https://api.weatherapi.com/v1/forecast.json?key=1986480656ec490d950204923202611&q=${location}&lang=de`,
             {
                 mode: 'cors'
             }
