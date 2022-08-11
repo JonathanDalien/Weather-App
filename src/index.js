@@ -1,3 +1,5 @@
+const { cond } = require("lodash");
+
 const cityInput = document.querySelector("#input-city");
 const searchBtn = document.querySelector(".search")
 const img = document.querySelector(".pictest")
@@ -32,6 +34,8 @@ function setSearchResult(weatherData) {
     const humidity = document.querySelector(".humidity-data");
     const day = document.querySelector(".day");
     const time = document.querySelector(".time");
+    const icon = document.getElementById("icon")
+    console.log(icon)
 
     city.textContent = `${weatherData.location}, ${weatherData.region}`
     weather.textContent = `${weatherData.condition}`
@@ -41,6 +45,22 @@ function setSearchResult(weatherData) {
     humidity.textContent = `${weatherData.humidity}%`
     day.textContent = `${weatherData.dayName}, ${weatherData.day}. ${weatherData.month} ${weatherData.year}`
     time.textContent = `${weatherData.hours}:${weatherData.minutes} Uhr`
+    icon.className = "";
+    icon.className = `icon wi ${setIcon(weatherData.condition)}`
+
+}
+
+function setIcon(condition) {
+    switch (condition) {
+        case "Sonnig":
+            return "wi-day-sunny"
+            break;
+        case "leicht bewölkt":
+            return "wi-day-cloudy"
+            break;
+        default:
+            return "wi-day-storm-showers"
+    }
 }
 
 function processData(weatherData) {
@@ -162,48 +182,6 @@ function processData(weatherData) {
     console.log(data);
     return data;
 }
-
-// function processTime(weatherData) {
-//     const date = new Date(`${weatherData.location.localtime}`)
-//     const day = date.getDay();
-//     let dayDe;
-
-//     switch (day) {
-//         case 0:
-//             dayDe = "Sonntag"
-//             break;
-//         case 1:
-//             dayDe = "Montag"
-//             break;
-//         case 2:
-//             dayDe = "Dienstag"
-//             break;
-//         case 3:
-//             dayDe = "Mittwoch"
-//             break;
-//         case 4:
-//             dayDe = "Donnerstag"
-//             break;
-//         case 5:
-//             dayDe = "Freitag"
-//             break;
-//         case 6:
-//             dayDe = "Samstag"
-//             break;
-//     }
-//     return dayDe;
-
-// }
-
-
-function testfunction() {
-    const date = new Date("2022-08-12 15:12")
-    const day = date.getDate();
-    return day;
-}
-
-console.log(testfunction())
-
 
 searchBtn.addEventListener("click", (e) => {
     e.preventDefault();
