@@ -10,34 +10,66 @@
     </title>
     <script src="https://kit.fontawesome.com/27d8df438f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../src/style/weather-icons.css">
+    <link rel="stylesheet" href="../src/style/weather-icons-wind.min.css">
+    <link rel="stylesheet" href="../src/style/weather-icons-wind.css">
+    <link rel="stylesheet" href="../src/style/weather-icons.min.css">
     <link rel="stylesheet" href="../src/style/style.css">
-<script defer src="main.431ecbcbcdb3e2eaee1c.js"></script></head>
+<script defer src="main.ad3dd4cc477feb585646.js"></script></head>
 
 <body>
     <header>
         <form action="Get" class="form">
             <input type="text" name="city" id="input-city" placeholder="Enter your city">
-            <button class="search"><i class="icon fa-solid fa-magnifying-glass-location fa-2xl"></i></button>
+            <i class="search fa-solid fa-magnifying-glass-location"></i>
         </form>
     </header>
     <main>
         <div class="weather-data">
             <div class="city-info">
-                <h1 class="weather">Sonnig</h3>
-                    <h3 class="city">Mannheim
-                </h1>
+                <h1 class="weather">Sonnig</h1>
+                <h3 class="city">Mannheim</h3>
+                <div class="date">
+                    <h3 class="day">Freitag, 12. August 2022</h3>
+                    <h3 class="time">22:22 Uhr</h3>
+                </div>
+                <div class="celsius">
+                    20&deg;C
+                </div>
+                <i class="icon wi wi-night-sleet"></i>
+
             </div>
             <div class="celsius-info">
-                <div class="celsius">
-                    20&deg;
-                </div>
                 <div class="add-info">
-                    <p class="feelsLike">Gefühlt: 22</p>
-                    <p class="wind">Wind: 22</p>
-                    <p class="humidity">Feuchtigkeit: 22</p>
+                    <div class="feelslike">
+                        <i class="weather-details-icon wi wi-thermometer"></i>
+                        <div class="add-info-data">
+                            <p class="add-info-data-text">Gefühlt:</p>
+                            <p class="feelslike-data"> 20&deg;C</p>
+                        </div>
+                    </div>
+                    <div class="wind">
+                        <i class="weather-details-icon wi wi-strong-wind"></i>
+                        <div class="add-info-data">
+                            <p class="add-info-data-text">Wind</p>
+                            <p class="wind-data"> 20&deg;C</p>
+                        </div>
+                    </div>
+                    <div class="humidity">
+                        <i class="weather-details-icon wi wi-humidity"></i>
+                        <div class="add-info-data">
+                            <p class="add-info-data-text">Luftfeuchtigkeit:</p>
+                            <p class="humidity-data"> 20&deg;C</p>
+                        </div>
+                    </div>
+                    <div class="rain">
+                        <i class="weather-details-icon-rain wi wi-raindrops"></i>
+                        <div class="add-info-data">
+                            <p class="add-info-data-text">Regenwahrscheinlichkeit:</p>
+                            <p class="rain-data"> 20&deg;C</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <i class="wi wi-night-sleet"></i>
         </div>
     </main>
 </body>
