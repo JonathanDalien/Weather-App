@@ -8,10 +8,36 @@
     <title>
         <%= htmlWebpackPlugin.options.title %>
     </title>
+    <script src="https://kit.fontawesome.com/27d8df438f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../src/style.css">
 </head>
 
 <body>
-    <h1> sdsdcsd</h1>
+    <header>
+        <form action="Get" class="form">
+            <input type="text" name="city" id="input-city" placeholder="Enter your city">
+            <button class="search"><i class="icon fa-solid fa-magnifying-glass-location fa-2xl"></i></button>
+        </form>
+    </header>
+    <main>
+        <div class="weather-data">
+            <div class="city-info">
+                <h3 class="weather">Sonnig</h3>
+                <h1 class="city">Mannheim</h1>
+            </div>
+            <div class="celsius-info">
+                <div class="celsius">
+                    20&deg;
+                </div>
+                <div class="add-info">
+                    <p class="feelsLike">Gefühlt: 22</p>
+                    <p class="wind">Wind: 22</p>
+                    <p class="humidity">Feuchtigkeit: 22</p>
+
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>
