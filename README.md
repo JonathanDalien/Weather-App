@@ -1,7 +1,7 @@
 # Weather-App
 Weather App Project from The Odin Project.
 
-[Live Demo](https://legendejj.github.io/Weather-App/) :point_left:
+[Live Demo](https://jonathandalien.github.io/Weather-App/) :point_left:
 
 
 ## Things learned from this
